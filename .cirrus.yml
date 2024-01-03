@@ -1,9 +1,18 @@
 env:
-  CIRRUS_CLONE_SUBMODULES: true
+# CIRRUS_CLONE_SUBMODULES failed with:
+# Updating submodules...
+# Failed to update submodule "dependencies/libltc": entry not found!
+#
+#  CIRRUS_CLONE_SUBMODULES: true
 
 FreeBSD_task:
   freebsd_instance:
     image_family: freebsd-14-0
+
+  submodule_script:
+    - pkg install -y git-lite
+    - git submodule init
+    - git submodule update
 
   cbp2make_script:
     - pkg install -y gcc doxygen git-lite gmake
