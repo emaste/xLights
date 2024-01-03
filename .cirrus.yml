@@ -1,0 +1,14 @@
+env:
+  CIRRUS_CLONE_SUBMODULES: true
+
+FreeBSD_task:
+  freebsd_instance:
+    image_family: freebsd-14-0
+
+  cbp2make_script:
+    - pkg install -y gcc doxygen git-lite gmake
+    - (cd /root && git clone https://github.com/mirai-computing/cbp2make && cd cbp2make && gmake -f cbp2make.cbp.mak.unix && install bin/Release/cbp2make /usr/local/bin/)
+  setup_script:
+    pkg install -y pkgconf lua53 gcc
+  build_script:
+    gmake
