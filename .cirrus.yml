@@ -1,4 +1,4 @@
-env:
+# env:
 # CIRRUS_CLONE_SUBMODULES failed with:
 # Updating submodules...
 # Failed to update submodule "dependencies/libltc": entry not found!
